@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include<windows.h>
+#include "Product.h"
 #include "addProduct.c"
 #include "delete.c"
 #include "view.c"
