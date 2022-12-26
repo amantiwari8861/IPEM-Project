@@ -1,10 +1,9 @@
 #include "Product.h"
 void editProduct()
 {
-    FILE *fptr=fopen("storage.bin","rb");
-    FILE *tempfptr=fopen("tempstorage.bin","wb");
-    int id,flag=0;
-    printf("struct product size= %d \n",sizeof(product));
+    FILE *fptr=fopen("storage.bin","rb+");
+    int id,flag=0,size=sizeof(product);
+    printf("struct product size= %d \n",size);
     printf("enter product id which u want to edit :");
     scanf("%d",&id);
     product tempstr;
@@ -28,19 +27,13 @@ void editProduct()
             scanf("%f",&tempstr.price);
             printf("enter new product quantity -> ");
             scanf("%d",&tempstr.quantity);
-            fwrite(&tempstr,sizeof(product),1,tempfptr);
+            fseek(fptr,-size,SEEK_CUR);
+            fwrite(&tempstr,sizeof(product),1,fptr);
             flag=1;
-        }
-        else
-        {
-            printf("position -> %d \n",ftell(fptr));
-            fwrite(&tempstr,sizeof(product),1,tempfptr);
-        }       
+            break;
+        }     
     }
     fclose(fptr);
-    fclose(tempfptr);
-    remove("storage.bin");
-    rename("tempstorage.bin","storage.bin");
 
     if (flag==1)
     {

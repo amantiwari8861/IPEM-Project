@@ -1,14 +1,17 @@
 #include "Product.h"
+#include "gotoxy.h"
 void viewProduct()
 {
     FILE *ptr=fopen("storage.bin","rb");
 
     product vp;
 
-    
+    system("cls");
+    int x=1,y=1;
     while (fread(&vp,sizeof(product),1,ptr))
     {
-            printf(" %d %s %0.2f %d \n",vp.id,vp.name,vp.price,vp.quantity);
+        gotoxy(x+=5,y++);
+        printf(" %d %s %0.2f %d",vp.id,vp.name,vp.price,vp.quantity);
     }
     fclose(ptr);
     char ch;

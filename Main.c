@@ -2,6 +2,8 @@
 #include "delete.c"
 #include "view.c"
 #include "edit.c"
+// #include "search.c"
+#include<windows.h>
 
 int main()
 {
@@ -9,7 +11,8 @@ int main()
     char ch;
     do
     {
-        system("cls");
+        // system("cls");
+        system("color 85");
         // system("clear");//for linux
         printf("\n\t=========Welcome to Product mangement System==================\n");
         printf("\t 1.Add Product \n");
