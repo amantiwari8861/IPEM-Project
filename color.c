@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char ** argv){
+int main(){
     
     printf("\n");
     printf("\x1B[30mBlack\033[0m\t\t");
